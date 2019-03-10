@@ -28,8 +28,10 @@ yarn add react-navigation-hooks
 
 npm 
 ```
-npm install react-navigation --save
-npm install react-navigation-hooks --save
+npm i --save react-navigation 
+npm i --save react-navigation-hooks
+npm i --save react-native-elements
+
 ```
 
 ## Set base 
@@ -43,13 +45,13 @@ cp -R ./_base/src/* ./
 Change app.json
 ```
 #line icon
-"icon": "./src/static_files/assets/icon.png",
+"icon": "./src/static_files/assets_app/icon.png",
 ```
 
 ```
 #line slash image 
 "splash":{
-    "image": "./src/static_files/assets/splash.png",
+    "image": "./src/static_files/assets_app/splash.png",
 ```
 
 
