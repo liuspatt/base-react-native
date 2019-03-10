@@ -34,10 +34,10 @@ npm install react-navigation-hooks --save
 
 ## Set base 
 ```
+rm -r assets
 rm App.js
 git clone https://github.com/liuspatt/base-react-native ./_base
 cp -R ./_base/src/* ./
-
 
 ```
 Change app.json
