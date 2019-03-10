@@ -13,9 +13,43 @@
 ```
 npm install -g expo-cli
 ```
-- init your app 
+## init your app 
 ```
 expo init MyNewApp
 ```
-
 Select blank option
+
+## Set basic libs 
+Yarn 
+```
+yarn add react-navigation
+yarn add react-navigation-hooks
+```
+
+npm 
+```
+npm install react-navigation --save
+npm install react-navigation-hooks --save
+```
+
+## Set base 
+```
+rm App.js
+git clone https://github.com/liuspatt/base-react-native ./_base
+cp -R ./_base/src/* ./
+
+
+```
+Change app.json
+```
+#line icon
+"icon": "./src/static_files/assets/icon.png",
+```
+
+```
+#line slash image 
+"splash":{
+    "image": "./src/static_files/assets/splash.png",
+```
+
+
