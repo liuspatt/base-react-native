@@ -1,4 +1,7 @@
 # Base react native 
+Todo 
+- add redux model
+- add hooks model ( wating release 0.59)
 
 
 # Setup 
@@ -24,13 +27,14 @@ Yarn
 ```
 yarn add react-navigation
 yarn add react-navigation-hooks
+yarn add react-native-elements
 ```
 
 npm 
 ```
-npm i --save react-navigation 
-npm i --save react-navigation-hooks
-npm i --save react-native-elements
+npm i -s react-navigation 
+npm i -s react-navigation-hooks
+npm i -s react-native-elements
 
 ```
 

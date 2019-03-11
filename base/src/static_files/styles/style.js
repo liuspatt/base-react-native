@@ -20,4 +20,16 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    menubar:{
+        color:'#fff',
+        marginLeft:10,
+    },
+    m10:{
+        marginTop:10,
+        marginBottom:10,
+    },
+    m20:{
+        marginTop:20,
+        marginBottom:20,
+    }
 });

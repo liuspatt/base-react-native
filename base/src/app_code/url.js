@@ -13,38 +13,66 @@ import {Icon} from 'react-native-elements'
 import DrawerCustom from './components/navigator/drawer_custom'
 import HeaderCustom from './components/navigator/header_custom'
 
+// Wellcome
+import WellcomePage from './controllers/wellcome/wellcome';
+import ExplanationPage from './controllers/wellcome/explanation';
 
 // Pages
 import HomePage from './controllers/home';
 import AboutPage from './controllers/about';
 
-import Tab1 from './controllers/tabs/tab1';
-import Tab2 from './controllers/tabs/tab2';
-import Tab3 from './controllers/tabs/tab3';
+//
+import LoadImagesPage from './controllers/load_images/load_images';
+import EndProcessPage from './controllers/load_images/end_process';
 
-import Drawer1 from './controllers/drawer/drawer1';
-import Drawer2 from './controllers/drawer/drawer2';
-import Drawer3 from './controllers/drawer/drawer3';
+import Tab1Page from './controllers/tabs/tab1';
+import Tab2Page from './controllers/tabs/tab2';
+import Tab3Page from './controllers/tabs/tab3';
+
+import DashBoard from './controllers/drawer/dashboard';
+
 
 /*   */
 //
-const StackNavigator = createStackNavigator(
+const LoadImages = createStackNavigator(
     // Routes
     {
-        Home: {
-            screen: HomePage,
-            headerStyle: {backgroundColor: '#4C3E54'},
-            headerTintColor: 'white',
+        LoadImages: {
+            screen: LoadImagesPage,
         },
-        About: {
-            screen: AboutPage
+        EndProcess: {
+            screen: EndProcessPage,
+        },
+    },
+    // Config
+    {
+
+        initialRouteName: 'LoadImages',
+        headerMode: 'float',
+    }
+);
+
+const WellcomeStack = createStackNavigator(
+    // Routes
+    {
+        Wellcome: {
+            screen: WellcomePage,
+            navigationOptions: ({ navigation }) => ({
+                header: null
+            })
+        },
+        Explanation: {
+            screen: ExplanationPage,
+            navigationOptions: ({ navigation }) => ({
+                header: null
+            })
         }
     },
     // Config
     {
 
-        initialRouteName: 'Home',
-        headerMode: 'float',
+        initialRouteName: 'Wellcome',
+        headerMode: 'none',
         headerStyle: { backgroundColor: '#4C3E54' },
 
         navigationOptions: ({navigation}) => ({
@@ -57,9 +85,9 @@ const StackNavigator = createStackNavigator(
 const TabNavigator = createBottomTabNavigator(
     // Routes
     {
-        Tab1: Tab1,
-        Tab2: Tab2,
-        Tab3: Tab3,
+        Tab1: Tab1Page,
+        Tab2: Tab2Page,
+        Tab3: Tab3Page,
     },
     // Config
     {
@@ -92,19 +120,12 @@ const TabNavigator = createBottomTabNavigator(
 const StackNavigatorDrawer = createStackNavigator(
     // Routes
     {
-        Drawer1: Drawer1,
-        Drawer2: Drawer2,
-        Drawer3: Drawer3,
+        DashBoard: DashBoard,
     },
     // Config
     {
-        initialRouteName: 'Drawer1',
+        initialRouteName: 'DashBoard',
         headerMode: 'float',
-        navigationOptions: ({navigation}) => ({
-            headerStyle: {backgroundColor: '#4C3E54'},
-            title: 'Welcome!',
-            headerTintColor: 'white',
-        })
 
     }
 );
@@ -113,21 +134,30 @@ const StackNavigatorDrawer = createStackNavigator(
 const DrawerStack = createDrawerNavigator(
     // Routes
     {
-        Drawer1: {
-            path: '/',
+        Drawer: {
             screen: StackNavigatorDrawer,
         },
-        Drawer2: Drawer2,
-        Drawer3: Drawer3,
+        'Load Images': {
+            screen: LoadImages,
+        },
+        'Tab Version': {
+            screen: TabNavigator,
+        },
+        'Clear All': {
+            screen: TabNavigator,
+        },
+        About: {
+            screen: AboutPage
+        }
     },
     // Config
     {
-
+        drawerPosition:"right",
         // navigationOptions: {
         //     header: HeaderCustom,
         // },
         contentComponent: DrawerCustom,
-        initialRouteName: 'Drawer1',
+        initialRouteName: 'Drawer',
     }
 );
 
@@ -135,13 +165,14 @@ const DrawerStack = createDrawerNavigator(
 const Switch = createSwitchNavigator(
     // List of switch
     {
-        Stack: StackNavigator,
+        LoadImages: LoadImages,
         Tab: TabNavigator,
         Drawer: DrawerStack,
+        Wellcome: WellcomeStack
     },
     {
         headerMode: 'none',
-        initialRouteName: 'Stack',
+        initialRouteName: 'LoadImages',
     }
 );
 export default createAppContainer(Switch);

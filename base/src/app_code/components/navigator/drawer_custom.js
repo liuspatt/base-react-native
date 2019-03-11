@@ -14,7 +14,7 @@ const DrawerContent = (props) => (
             }}
         >
             <Text style={{ color: 'white', fontSize: 30 }}>
-                Header
+                Base App
             </Text>
         </View>
         <DrawerItems {...props} />
