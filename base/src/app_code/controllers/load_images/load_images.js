@@ -4,29 +4,42 @@ import {Icon} from 'react-native-elements'
 import m_api from '../../models/my_app';
 import {Store} from '../../hooks/main_store';
 import styles from '../../../static_files/styles/style'
-export default class App extends React.Component {
 
-    static navigationOptions = {
-        title: 'Load Images',
-        headerStyle: {backgroundColor: '#4C3E54'},
-        headerTintColor: 'white',
-    };
-    constructor(props) {
-        super(props);
+function Controller(props) {
+    const {state, dispatch} = React.useContext(Store);
+    const { navigate } = props.navigation;
 
-    }
-    componentDidMount() {
-        console.log(this.state)
-    }
+    state.msg = "Loading images!";
+    React.useEffect(() => {
+        state.list_cats.length === 0 && m_api.updateDataAction(dispatch);
+        console.log(state.list_cats);
+        // is loaded
+       
+    }, [state]);
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Loading images!</Text>
-            </View>
+    props.list_cats = state.list_cats;
+    props.state = {state, dispatch};
+    // constructor(props) {
+    //     super(props);
+    //
+    // }
+    // componentDidMount() {
+    //     console.log(this.state)
+    // }
+    if (state.list_cats.length>0){
+        state.msg = "Loaded, redirect in 2 seconds!";
+        setTimeout(()=>{
+            navigate('Drawer');
+        },2000);
+        
+    }    
+    return (
+        
+        <View style={styles.container}>
+            <Text>{state.msg}</Text>
+        </View>
 
-        );
-    }
+    );
 }
 
-
+export default Controller;

@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, Text} from "react-native";
+import {View, Text,TouchableOpacity} from "react-native";
+import styles from './../static_files/styles/style'
+
 import {
     createStackNavigator,
     createAppContainer,
@@ -23,7 +25,7 @@ import AboutPage from './controllers/about';
 
 //
 import LoadImagesPage from './controllers/load_images/load_images';
-import EndProcessPage from './controllers/load_images/end_process';
+
 
 import Tab1Page from './controllers/tabs/tab1';
 import Tab2Page from './controllers/tabs/tab2';
@@ -39,14 +41,18 @@ const LoadImages = createStackNavigator(
     {
         LoadImages: {
             screen: LoadImagesPage,
-        },
-        EndProcess: {
-            screen: EndProcessPage,
-        },
+            navigationOptions: {
+                title: "Load images",
+            }, 
+        }
+       
     },
     // Config
     {
-
+        defaultNavigationOptions: ({ navigation }) => ({
+            headerStyle: {backgroundColor: '#4C3E54'},
+            headerTintColor: 'white',
+        }),          
         initialRouteName: 'LoadImages',
         headerMode: 'float',
     }
@@ -75,10 +81,10 @@ const WellcomeStack = createStackNavigator(
         headerMode: 'none',
         headerStyle: { backgroundColor: '#4C3E54' },
 
-        navigationOptions: ({navigation}) => ({
+        defaultNavigationOptions: {
             headerStyle: {backgroundColor: '#4C3E54'},
             headerTintColor: 'white',
-        })
+        }, 
     }
 );
 
@@ -120,7 +126,27 @@ const TabNavigator = createBottomTabNavigator(
 const StackNavigatorDrawer = createStackNavigator(
     // Routes
     {
-        DashBoard: DashBoard,
+        DashBoard: 
+        {   screen:DashBoard,
+            navigationOptions:{
+                headerStyle: {backgroundColor: '#4C3E54'},
+                headerTintColor: 'white',
+                title: "Dashboard",
+                headerLeft: (
+                    <TouchableOpacity
+                        style={styles.menubar}
+                        onPress={() => navigation.openDrawer()}
+                    >
+                            <Icon
+                                name='bars'
+                                type='font-awesome'
+                                color='#ffffff'/>
+    
+                    </TouchableOpacity>
+                ),
+            }
+        }
+        ,
     },
     // Config
     {
@@ -136,6 +162,7 @@ const DrawerStack = createDrawerNavigator(
     {
         Drawer: {
             screen: StackNavigatorDrawer,
+            
         },
         'Load Images': {
             screen: LoadImages,

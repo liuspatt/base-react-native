@@ -1,43 +1,36 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button,SafeAreaView,TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, Button,SafeAreaView,TouchableOpacity,Image } from 'react-native';
 import {Icon} from 'react-native-elements'
 import styles from '../../../static_files/styles/style'
-export default class App extends React.Component {
-
-    static navigationOptions = ({ navigation }) => {
-        const { state } = navigation;
-        return {
-            headerStyle: {backgroundColor: '#4C3E54'},
-            headerTintColor: 'white',
-            title: "Dashboard",
-            headerLeft: (
-                <TouchableOpacity
-                    style={styles.menubar}
-                    onPress={() => navigation.openDrawer()}
-                >
-                        <Icon
-                            name='bars'
-                            type='font-awesome'
-                            color='#ffffff'/>
-
-                </TouchableOpacity>
-            ),
-        };
-    };
-
-    render() {
-        return (
-            <SafeAreaView  style={styles.container}>
+import {Store} from '../../hooks/main_store';
 
 
-                <Text>List of images not loaded yet</Text>
-                <Text>Go to drawer menu and click in load images </Text>
+export default function Controller(props) {
+    const {state, dispatch} = React.useContext(Store);
+    const { navigate } = props.navigation;
+    list_cats=state.list_cats
+    console.log(list_cats);
 
 
+    return (
+        <SafeAreaView  style={styles.container}>
 
 
-            </SafeAreaView >
+            <Text>List of images not loaded yet</Text>
+            <Text>Go to drawer menu and click in load images </Text>
 
-        );
-    }
+            {
+                    list_cats.map((item, i) => {
+                        return (                           
+                            <Image 
+                                style={{width: 150, height: 150}}
+                                source={{uri: item.url}}
+                            ></Image>
+                        )
+                    })
+            }
+
+        </SafeAreaView >
+
+    )    
 }
