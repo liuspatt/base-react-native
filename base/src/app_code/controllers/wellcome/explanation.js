@@ -1,36 +1,25 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
-import {Icon} from 'react-native-elements'
-import styles from '../../../static_files/styles/style'
+import Page from "../../pages/wellcome/explanation";
+
 export default class App extends React.Component {
-    static navigationOptions = {
-        title: 'Home',
-        headerStyle: {backgroundColor: '#4C3E54'},
-        headerTintColor: 'white',
-    };
 
+    constructor(props) {
+        super(props);
+        
+    }
+
+    next_page = () =>{
+        this.props.navigation.navigate('Drawer');
+        console.log("asdfasdf");
+    }
     render() {
+
         return (
-            <View style={styles.container}>
-                <Icon
-                    name='picture-o'
-                    type='font-awesome'
-                    color='#00aced'/>
-                <Text style={styles.m20}>We have 3 sections</Text>
-                <Text style={styles.m10}>- Well come </Text>
-                <Text style={styles.m10}>- Drawer ( dashboard ) </Text>
-                <Text style={styles.m10}>- Button load with redirect ( list of api )  </Text>
-                <Text style={styles.m10}>- Button load with redirect ( list of api )  </Text>
-
-
-                <Button style={styles.m20}
-                    title="Next"
-                    onPress={() => this.props.navigation.navigate('Drawer')}
-                />
-            </View>
+            <Page
+                next_page={this.next_page}
+            >
+            </Page>
 
         );
     }
 }
-
-
