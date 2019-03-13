@@ -128,7 +128,7 @@ const StackNavigatorDrawer = createStackNavigator(
     {
         DashBoard: 
         {   screen:DashBoard,
-            navigationOptions:{
+            navigationOptions: ({navigation}) => ({
                 headerStyle: {backgroundColor: '#4C3E54'},
                 headerTintColor: 'white',
                 title: "Dashboard",
@@ -144,7 +144,7 @@ const StackNavigatorDrawer = createStackNavigator(
     
                     </TouchableOpacity>
                 ),
-            }
+            }),
         }
         ,
     },
