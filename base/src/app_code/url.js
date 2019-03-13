@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, Text,TouchableOpacity} from "react-native";
+import {View, Text,TouchableOpacity,Platform} from "react-native";
 import styles from './../static_files/styles/style'
-
+import { fromLeft,fromRight } from 'react-navigation-transitions';
 import {
+
+
     createStackNavigator,
     createAppContainer,
     createBottomTabNavigator,
@@ -11,6 +13,7 @@ import {
     NavigationActions,
     DrawerItems
 } from 'react-navigation'
+
 import {Icon} from 'react-native-elements'
 import DrawerCustom from './components/navigator/drawer_custom'
 import HeaderCustom from './components/navigator/header_custom'
@@ -34,8 +37,105 @@ import Tab3Page from './controllers/tabs/tab3';
 import DashBoard from './controllers/drawer/dashboard';
 
 
-/*   */
-//
+/* Structure */
+/* We create this structure of process like 
+    Auth: stackNavigator ( without header )        
+    Name_Stack Auth
+    - Page 1: Email
+        - Name: AuthEmail
+        -
+    - Page 2: Register
+        - Name: AuthRegister
+        -
+Create all pages in groups and defined components 
+At end create a SwitchNavigator to group all components
+
+*/
+
+
+/* Stack : Wellcome */
+/* Pages : 
+        WellcomeLoading
+        WellcomeExplanation 
+*/
+const WellcomeStack = createStackNavigator(
+    // Routes
+    {
+        WellcomeLoading: {
+            screen: WellcomePage,
+            navigationOptions: ({ navigation }) => ({
+                header: null
+            })
+        },
+        WellcomeExplanation: {
+            screen: ExplanationPage,
+            navigationOptions: ({ navigation }) => ({
+                header: null
+            })
+        }
+    },
+    // Config
+    {
+
+        initialRouteName: 'WellcomeLoading',
+        headerMode: 'none',
+        headerStyle: { backgroundColor: '#4C3E54' },
+        mode: 'card',
+        animationEnabled: true,
+        defaultNavigationOptions: {
+            headerStyle: {backgroundColor: '#4C3E54'},
+            headerTintColor: 'white',
+        }, 
+        transitionConfig: () => fromRight(300),
+    }
+);
+
+/* Component End */
+
+
+/* Stack : Auth */
+/* Pages : 
+        AuthLoading
+        AuthExplanation 
+*/
+// const AuthStack = createStackNavigator(
+//     // Routes
+//     {
+//         AuthLoading: {
+//             screen: AuthPage,
+//             navigationOptions: ({ navigation }) => ({
+//                 header: null
+//             })
+//         },
+//         AuthExplanation: {
+//             screen: ExplanationPage,
+//             navigationOptions: ({ navigation }) => ({
+//                 header: null
+//             })
+//         }
+//     },
+//     // Config
+//     {
+
+//         initialRouteName: 'AuthLoading',
+//         headerMode: 'none',
+//         headerStyle: { backgroundColor: '#4C3E54' },
+//         mode: 'card',
+//         animationEnabled: true,
+//         defaultNavigationOptions: {
+//             headerStyle: {backgroundColor: '#4C3E54'},
+//             headerTintColor: 'white',
+//         }, 
+//         transitionConfig: () => fromRight(300),
+//     }
+// );
+
+/* Component End */
+
+/* Component : Wellcome */
+/* Pages : 
+        WellcomeLoading 
+*/
 const LoadImages = createStackNavigator(
     // Routes
     {
@@ -58,35 +158,6 @@ const LoadImages = createStackNavigator(
     }
 );
 
-const WellcomeStack = createStackNavigator(
-    // Routes
-    {
-        Wellcome: {
-            screen: WellcomePage,
-            navigationOptions: ({ navigation }) => ({
-                header: null
-            })
-        },
-        Explanation: {
-            screen: ExplanationPage,
-            navigationOptions: ({ navigation }) => ({
-                header: null
-            })
-        }
-    },
-    // Config
-    {
-
-        initialRouteName: 'Wellcome',
-        headerMode: 'none',
-        headerStyle: { backgroundColor: '#4C3E54' },
-
-        defaultNavigationOptions: {
-            headerStyle: {backgroundColor: '#4C3E54'},
-            headerTintColor: 'white',
-        }, 
-    }
-);
 
 const TabNavigator = createBottomTabNavigator(
     // Routes

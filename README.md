@@ -28,6 +28,8 @@ npm i --save react-native-elements
 npm i --save react-native-gesture-handler
 npm i --save react-native-vector-icons
 npm i --save react-navigation
+npm i --save react-navigation-transitions
+
 ```
 
 Link native reqs
@@ -57,9 +59,10 @@ yarn add react-native-elements
 
 npm 
 ```
-npm i -s react-navigation 
-npm i -s react-navigation-hooks
-npm i -s react-native-elements
+npm i --save react-navigation 
+npm i --save react-navigation-hooks
+npm i --save react-native-elements
+npm i --save react-navigation-transitions
 
 ```
 
