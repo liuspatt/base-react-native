@@ -199,7 +199,7 @@ const Switch = createSwitchNavigator(
     },
     {
         headerMode: 'none',
-        initialRouteName: 'LoadImages',
+        initialRouteName: 'Wellcome',
     }
 );
 export default createAppContainer(Switch);
