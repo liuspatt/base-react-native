@@ -4,7 +4,7 @@ Todo
 - add hooks model ( wating release 0.59)
 
 
-# Setup 
+# Setup Base
 - Format os ( new os is good )
 - Install android studio 
     - You can have sdk folder for only download the installer 
@@ -12,11 +12,36 @@ Todo
         - For windows check intel virtualization
 - Xcode ( just install )    
 - Install node
+- Install python2
+- Install jdk8 
 - Install ( expo )
+
+# Setup react native
+React native compile directly to phones.
+## Init your app
+react-native init MyNewApp
+## Set libs of demo 
+Instal libs
+```
+npm i --save apisauce
+npm i --save react-native-elements
+npm i --save react-native-gesture-handler
+npm i --save react-native-vector-icons
+npm i --save react-navigation
+```
+
+Link native reqs
+```
+react-native link react-native-gesture-handler
+react-native link react-native-vector-icons
+```
+
+# Setup expo 
+Expo help with link libs and deploy.
 ```
 npm install -g expo-cli
 ```
-## init your app 
+## Init your app 
 ```
 expo init MyNewApp
 ```
@@ -38,7 +63,8 @@ npm i -s react-native-elements
 
 ```
 
-## Set base 
+
+# Set base 
 ```
 rm -r assets
 rm App.js
