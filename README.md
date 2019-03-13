@@ -1,9 +1,9 @@
 # Base react native 
-Todo 
-- add redux model
-- add hooks model ( wating release 0.59)
+Base app for init new proyects or testing functions. 
 
-
+- React Navigation ( ok )
+- Hooks only for react-native ( no expo ) ( testing )
+- Apisauce ( ok )
 # Setup Base
 - Format os ( new os is good )
 - Install android studio 
