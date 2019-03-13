@@ -199,6 +199,7 @@ const Switch = createSwitchNavigator(
     },
     {
         headerMode: 'none',
+        // initialRouteName: 'LoadImages',
         initialRouteName: 'Wellcome',
     }
 );
